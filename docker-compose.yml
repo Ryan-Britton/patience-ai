@@ -1,21 +1,4 @@
 services:
-  langserve:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    env_file:
-      - .env
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./apps:/code/apps
-    depends_on:
-      - weaviate
-      - neo4j
-      - graphiti
-    command: >
-      uvicorn apps.email_manager.main:app --host 0.0.0.0 --port 8000 --reload
-
   weaviate:
     image: semitechnologies/weaviate:1.25.6
     restart: on-failure
@@ -44,8 +27,8 @@ services:
     restart: on-failure
     environment:
       NEO4J_URI: bolt://neo4j:7687
-      NEO4J_USERNAME: neo4j
-      NEO4J_PASSWORD: ${NEO4J_PASSWORD:-changeme}
+      NEO4J_USER: neo4j
+      NEO4J_PASSWORD: changeme
       OPENAI_API_KEY: ${OPENAI_API_KEY}
     ports:
       - "8100:8080"
@@ -53,7 +36,7 @@ services:
       - neo4j
 
   n8n:
-    image: n8nio/n8n:1.41
+    image: n8nio/n8n:latest
     restart: on-failure
     ports:
       - "5678:5678"

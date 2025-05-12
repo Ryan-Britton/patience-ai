@@ -1,9 +1,9 @@
 """LangGraph definition for the Email Communication Manager."""
 import os, json, re
 from langgraph.graph import StateGraph
-from langchain.schema import RunnableConfig
+from langchain_openai import ChatOpenAI
+from langchain_core.runnables import RunnableConfig
 from langchain.prompts import PromptTemplate
-from langchain.chat_models import ChatOpenAI
 from langchain.tools import StructuredTool
 from dotenv import load_dotenv
 
