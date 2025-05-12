@@ -1,0 +1,23 @@
+name: Deploy to LangGraph Platform
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install LangGraph CLI
+        run: |
+          pip install langgraph-cli
+      - name: Deploy to staging
+        env:
+          LANGGRAPH_API_KEY: ${{ secrets.LANGGRAPH_API_KEY }}
+        run: |
+          langgraph deploy --project=staging --yes
