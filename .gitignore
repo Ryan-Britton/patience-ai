@@ -1,9 +1,8 @@
 __pycache__/
 .env
 .vscode/
+.devcontainer/
 .idea/
-.pytest_cache/
-.mypy_cache/
 *.pyc
 node_modules/
 n8n_data/

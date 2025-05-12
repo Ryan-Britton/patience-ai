@@ -1,21 +1,11 @@
 {
-    "name": "Patience‑AI Dev",
-    "dockerComposeFile": ["infra/docker-compose.yml"],
-    "service": "langserve",              
-    "workspaceFolder": "/code",
-    "runServices": [
-      "langserve",
-      "n8n",
-      "weaviate",
-      "neo4j",
-      "graphiti"
-    ],
-    "shutdownAction": "stopCompose",
-    "extensions": [
-      "ms-python.python",
-      "ms-azuretools.vscode-docker"
-    ],
-    "postCreateCommand": "pip install -e .",
-    "forwardPorts": [8000, 5678, 8080, 7474]
-  }
-  
+  "name": "Patience‑AI Dev",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "langserve",
+  "workspaceFolder": "/code",
+  "runServices": ["langserve","n8n","weaviate","neo4j","graphiti"],
+  "shutdownAction": "stopCompose",
+  "extensions": ["ms-python.python","ms-azuretools.vscode-docker"],
+  "postCreateCommand": "pip install -e .",
+  "forwardPorts": [8000,5678,8080,7474]
+}
